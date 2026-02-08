@@ -1,0 +1,59 @@
+---
+// Données synchronisées avec generate-previews.js
+const apps = [
+    {
+        title: "Kanban Garage",
+        desc: "A vibecoded project management tool for tinkerer teams.",
+        url: "https://kanban.philapps.com",
+        video: "/portfolio/Kanban.webm"
+    },
+    {
+        title: "Digital Journal",
+        desc: "Captured thoughts and digital duct tape sessions.",
+        url: "https://journal.philapps.com",
+        video: "/portfolio/Journal.webm"
+    },
+    {
+        title: "Hacker News Viewer",
+        desc: "A minimalist view of the front page of the internet.",
+        url: "https://news.ycombinator.com",
+        video: "/portfolio/hacker-news-demo.webm"
+    },
+];
+---
+<section id="portfolio" class="py-16 bg-dos-bg">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl mb-16 text-center pixel-title text-white/40">
+            Selected Outputs
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {apps.map((app) => (
+                <div class="glass-card group flex flex-col p-8">
+                    <div class="aspect-video bg-white/[0.02] mb-6 border border-white/5 relative overflow-hidden flex items-center justify-center grayscale opacity-30 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500">
+                        <video 
+                            src={app.video} 
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline 
+                            class="w-full h-full object-cover"
+                        ></video>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-dos-bg via-transparent to-transparent opacity-60"></div>
+                    </div>
+                    
+                    <h3 class="text-xl mb-3 font-bold text-white group-hover:text-dos-green transition-colors duration-300 oxanium-title">{app.title}</h3>
+                    <p class="font-sans text-sm leading-relaxed text-white/50 flex-grow">{app.desc}</p>
+                    
+                    <a href={app.url} target="_blank" class="mt-8 win95-btn text-center block !py-3 !text-xs tracking-widest">
+                        Launch_App
+                    </a>
+                </div>
+            ))}
+        </div>
+        
+        <div class="mt-24 border-t border-white/5 pt-12 text-center">
+            <p class="text-[10px] font-pixel text-white/20 uppercase tracking-[0.5em]">End of Transmission</p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,65 @@
+/* src/styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=VT323&family=Silkscreen:wght@400;700&family=Oxanium:wght@200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* --- Polices --- */
+  --font-terminal: "VT323", monospace;
+  --font-sans: "Fira Code", monospace;
+  --font-pixel: "Silkscreen", cursive;
+  --font-oxanium: "Oxanium", system-ui;
+
+  /* --- Couleurs Modern Monochromatic --- */
+  --color-dos-bg: #050505;
+  --color-dos-green: #00ff00;
+  --color-win95-gray: #e0e0e0;
+  --color-win95-dark: #111111;
+  --color-win95-blue: #ffffff;
+  --color-win95-in: #ffffff; 
+
+  /* --- Animation Terminal --- */
+  --animate-terminal-scroll: scroll-up 20s linear infinite;
+
+  @keyframes scroll-up {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+}
+
+/* --- Styles Globaux & Utilitaires --- */
+
+body {
+    @apply bg-dos-bg text-win95-gray font-sans selection:bg-white selection:text-black antialiased;
+    /* Effet scanline CRT ultra-minimal */
+    background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+    background-size: 100% 4px;
+}
+
+/* Classes utilitaires minimalistes */
+.win95-box {
+    @apply bg-win95-dark/50 backdrop-blur-sm border border-white/5 p-8 transition-all duration-300;
+}
+
+.win95-btn {
+    @apply bg-transparent border border-white/20 text-white px-8 py-3 uppercase tracking-[0.2em] font-bold hover:bg-white hover:text-black transition-all duration-300 cursor-pointer text-sm;
+}
+
+.win95-btn:active {
+    @apply scale-95;
+}
+
+h1, h2, h3 {
+    @apply tracking-tighter uppercase font-oxanium;
+}
+
+.pixel-title {
+    @apply font-pixel tracking-normal;
+}
+
+.oxanium-title {
+    @apply font-oxanium tracking-widest uppercase;
+}
+
+.glass-card {
+    @apply bg-white/[0.02] border border-white/10 backdrop-blur-lg hover:bg-white/[0.05] transition-all duration-500;
+}

@@ -1,17 +1,32 @@
 ---
-
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import HeroTerminal from '../components/HeroTerminal.astro';
+import VibecodingAbout from '../components/VibecodingAbout.astro';
+import PortfolioSection from '../components/PortfolioSection.astro';
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>PhilApps.com - The Digital Garage</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+        <div class="fixed inset-0 pointer-events-none opacity-10 bg-[linear-gradient(to_right,#00ff00_1px,transparent_1px),linear-gradient(to_bottom,#00ff00_1px,transparent_1px)] bg-[size:4rem_4rem] z-[-1]"></div>
+
+		<Header />
+		<main>
+			<HeroTerminal />
+			<VibecodingAbout />
+			<PortfolioSection />
+		</main>
+        
+        <footer class="py-12 bg-black text-center text-win95-dark font-sans text-sm border-t border-dos-green/30">
+            <p class="mb-2">© 1995-2026 PhilApps Corp. All rights reserved.</p>
+            <p>Best viewed in Netscape Navigator 4.0 at 800x600 resolution.</p>
+        </footer>
 	</body>
 </html>
