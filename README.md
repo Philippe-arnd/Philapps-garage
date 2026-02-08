@@ -1,3 +1,5 @@
+![Favicon](public/favicon.svg)
+
 # PhilApps Garage 🛠️
 
 A personal portfolio project themed around retro terminal aesthetics and "vibecoding" energy. This is where I document my tinkering, experiments, and the "it works on my machine" protocol.
@@ -14,7 +16,8 @@ PhilApps Garage is a tribute to the garage-disk-drive era, where logic meets ins
 The project uses a monochromatic DOS-inspired palette defined in `src/styles/global.css`:
 - **Background**: `#050505` (Deep Black)
 - **Primary**: `#00ff00` (Classic Terminal Green)
-- **Favicon**: A minimalist `P_` logo (`public/favicon.svg`) representing the command line prompt on a terminal screen.
+- **Favicon**: A minimalist `P_` logo representing the command line prompt on a terminal screen.
+
 
 ## 🚀 Tech Stack
 
