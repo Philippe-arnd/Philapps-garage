@@ -18,7 +18,7 @@
   --color-win95-in: #ffffff; 
 
   /* --- Animation Terminal --- */
-  --animate-terminal-scroll: scroll-up 20s linear infinite;
+  --animate-terminal-scroll: scroll-up 40s linear infinite;
 
   @keyframes scroll-up {
     0% { transform: translateY(0); }

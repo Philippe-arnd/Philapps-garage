@@ -1,4 +1,4 @@
-![Favicon](public/favicon.svg)
+<img src="public/favicon.svg" width="32" alt="Favicon" />
 
 # PhilApps Garage 🛠️
 
