@@ -10,6 +10,7 @@ PhilApps Garage is a tribute to the garage-disk-drive era, where logic meets ins
 - **Hero Terminal**: A live-scrolling terminal simulation with custom "vibecoding" logs and a functional hover prompt.
 - **Tinkering Progress**: A minimalist "About" section focused on the *Try-Fail-Learn-Iterate* cycle.
 - **Vibecoded Portfolio**: Showcasing projects like *Kanban Vibecoded* and *Journal Vibecoded*.
+- **Travel slider**: Because everyone needs a destination.
 
 ## 🎨 Visual Identity
 

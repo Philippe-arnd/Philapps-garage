@@ -63,3 +63,53 @@ h1, h2, h3 {
 .glass-card {
     @apply bg-white/[0.02] border border-white/10 backdrop-blur-lg hover:bg-white/[0.05] transition-all duration-500;
 }
+
+/* --- Interactive Destination Effects --- */
+
+/* Hyperspace */
+body.effect-hyperspace .grid-background {
+    animation: hyperspace 0.4s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
+    opacity: 0.6 !important;
+    filter: blur(1px) contrast(1.5);
+}
+
+@keyframes hyperspace {
+    0% { transform: scale(1); background-position: 0 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); background-position: 0 20rem; }
+}
+
+/* The Matrix */
+body.effect-matrix {
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
+}
+
+body.effect-matrix *, 
+body.effect-matrix *::before, 
+body.effect-matrix *::after {
+    color: var(--color-dos-green) !important;
+    border-color: rgba(0, 255, 0, 0.4) !important;
+}
+
+body.effect-matrix img {
+    filter: grayscale(100%) sepia(100%) hue-rotate(90deg) brightness(0.8) contrast(1.5);
+}
+
+/* _null */
+body.effect-null header,
+body.effect-null main > *:not(.destination-section),
+body.effect-null footer {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+body.effect-null .grid-background {
+    opacity: 0.02 !important;
+}
+
+body.effect-null .destination-section {
+    transform: translateY(-10vh);
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}

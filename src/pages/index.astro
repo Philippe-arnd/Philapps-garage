@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import HeroTerminal from '../components/HeroTerminal.astro';
 import VibecodingAbout from '../components/VibecodingAbout.astro';
 import PortfolioSection from '../components/PortfolioSection.astro';
+import DestinationSlider from '../components/DestinationSlider.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -16,13 +17,14 @@ import Footer from '../components/Footer.astro';
 		<title>PhilApps.com - The Digital Garage</title>
 	</head>
 	<body>
-        <div class="fixed inset-0 pointer-events-none opacity-10 bg-[linear-gradient(to_right,#00ff00_1px,transparent_1px),linear-gradient(to_bottom,#00ff00_1px,transparent_1px)] bg-[size:4rem_4rem] z-[-1]"></div>
+        <div class="fixed inset-0 pointer-events-none opacity-10 bg-[linear-gradient(to_right,#00ff00_1px,transparent_1px),linear-gradient(to_bottom,#00ff00_1px,transparent_1px)] bg-[size:4rem_4rem] z-[-1] grid-background"></div>
 
 		<Header />
 		<main>
 			<HeroTerminal />
 			<VibecodingAbout />
 			<PortfolioSection />
+            <DestinationSlider />
 		</main>
         
         <Footer />

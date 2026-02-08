@@ -1,0 +1,189 @@
+---
+---
+<section class="py-16 bg-dos-bg border-t border-white/5 relative z-50 destination-section">
+    <!-- Hyperspace Canvas -->
+    <canvas id="hyperspace-canvas" class="fixed inset-0 pointer-events-none opacity-0 transition-opacity duration-1000 z-[-1]"></canvas>
+
+    <div class="container mx-auto px-6 flex flex-col items-center">
+        <h2 class="text-3xl md:text-4xl mb-16 text-center pixel-title text-dos-green">
+            Choose your destination
+        </h2>
+        
+        <div class="w-full max-w-md bg-white/5 p-8 border border-white/10 glass-card">
+            <div class="flex justify-between text-[8px] md:text-[10px] font-pixel text-dos-green/60 uppercase mb-4 px-2">
+                <span class="destination-label" data-index="0">Stay Here</span>
+                <span class="destination-label" data-index="1">Hyperspace</span>
+                <span class="destination-label" data-index="2">The Matrix</span>
+                <span class="destination-label" data-index="3">_null</span>
+            </div>
+            
+            <input 
+                type="range" 
+                min="0" 
+                max="3" 
+                step="1" 
+                value="0" 
+                id="destination-slider"
+                class="w-full accent-dos-green cursor-pointer"
+            />
+            
+            <div class="mt-6 text-center">
+                <p id="destination-desc" class="text-[10px] font-pixel text-white/20 uppercase tracking-widest italic">Current location: Stable</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const slider = document.getElementById('destination-slider') as HTMLInputElement;
+    const body = document.body;
+    const desc = document.getElementById('destination-desc');
+    const labels = document.querySelectorAll('.destination-label');
+    const canvas = document.getElementById('hyperspace-canvas') as HTMLCanvasElement;
+    const ctx = canvas?.getContext('2d');
+    
+    let animationId: number;
+    let stars: any[] = [];
+    const starCount = 400;
+
+    class Star {
+        x: number; y: number; z: number; px: number; py: number;
+        constructor() {
+            this.init();
+        }
+        init() {
+            this.x = (Math.random() - 0.5) * canvas.width * 2;
+            this.y = (Math.random() - 0.5) * canvas.height * 2;
+            this.z = Math.random() * canvas.width;
+            this.px = 0; this.py = 0;
+        }
+        update() {
+            this.z -= 20; // Speed
+            if (this.z <= 0) this.init();
+        }
+        draw() {
+            let x = this.x / (this.z / canvas.width);
+            let y = this.y / (this.z / canvas.width);
+            
+            if (this.px !== 0) {
+                ctx!.beginPath();
+                ctx!.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx!.lineWidth = 2;
+                ctx!.moveTo(x + canvas.width / 2, y + canvas.height / 2);
+                ctx!.lineTo(this.px + canvas.width / 2, this.py + canvas.height / 2);
+                ctx!.stroke();
+            }
+            this.px = x; this.py = y;
+        }
+    }
+
+    function initStars() {
+        stars = [];
+        for (let i = 0; i < starCount; i++) stars.push(new Star());
+    }
+
+    function animate() {
+        ctx!.fillStyle = 'rgba(5, 5, 5, 0.2)'; // Trail effect
+        ctx!.fillRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(star => {
+            star.update();
+            star.draw();
+        });
+        animationId = requestAnimationFrame(animate);
+    }
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initStars();
+    }
+
+    const descriptions = [
+        "Current location: Stable",
+        "Engaging Hyperdrive... Hang on.",
+        "Wake up, Neo...",
+        "Error 404: Reality not found."
+    ];
+
+    function updateEffects(value: number) {
+        // Reset all effects
+        body.classList.remove('effect-hyperspace', 'effect-matrix', 'effect-null');
+        canvas.style.opacity = '0';
+        cancelAnimationFrame(animationId);
+        
+        // Update labels
+        labels.forEach((label, i) => {
+            if (i === value) {
+                label.classList.add('text-dos-green');
+                label.classList.remove('text-dos-green/60');
+            } else {
+                label.classList.remove('text-dos-green');
+                label.classList.add('text-dos-green/60');
+            }
+        });
+
+        // Update description
+        if (desc) desc.textContent = descriptions[value];
+
+        // Apply new effect
+        if (value === 1) {
+            body.classList.add('effect-hyperspace');
+            canvas.style.opacity = '1';
+            resize();
+            animate();
+        } else if (value === 2) {
+            body.classList.add('effect-matrix');
+        } else if (value === 3) {
+            body.classList.add('effect-null');
+        }
+    }
+    
+    slider?.addEventListener('input', () => {
+        updateEffects(parseInt(slider.value));
+    });
+
+    window.addEventListener('resize', () => {
+        if (slider.value === '1') resize();
+    });
+
+    // Initialize
+    updateEffects(0);
+</script>
+
+<style>
+    #destination-slider {
+        -webkit-appearance: none;
+        appearance: none;
+        background: rgba(255, 255, 255, 0.1);
+        height: 2px;
+        width: 100%;
+        outline: none;
+    }
+    
+    #destination-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 40px;
+        height: 12px;
+        background: #00ff00;
+        cursor: pointer;
+        border-radius: 0;
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        transition: all 0.2s ease;
+    }
+
+    #destination-slider::-webkit-slider-thumb:hover {
+        transform: scaleY(1.2);
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+    }
+
+    #destination-slider::-moz-range-thumb {
+        width: 40px;
+        height: 12px;
+        background: #00ff00;
+        cursor: pointer;
+        border-radius: 0;
+        border: none;
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    }
+</style>
