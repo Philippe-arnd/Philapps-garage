@@ -71,21 +71,22 @@ const commandLogs = [
             </div>
             
             <!-- Fun Command Scrolling Terminal -->
-            <div class="max-w-3xl h-[500px] overflow-hidden relative border-l border-white/10 pl-10 py-4 group cursor-text">
+            <div class="max-w-3xl h-[380px] overflow-hidden relative border-l border-white/10 pl-10 pt-4 group cursor-text mb-24">
                 <div class="text-white/80 font-sans text-xs md:text-sm animate-terminal-scroll italic font-light tracking-tight group-hover:text-dos-green group-hover:[animation-play-state:paused] transition-colors duration-300">
-                    <ul class="flex flex-col gap-4">
+                    <ul class="flex flex-col gap-1.5 pb-20">
                         {commandLogs.map((log) => (
                             <li class="whitespace-nowrap">{log}</li>
                         ))}
                     </ul>
                 </div>
                 
-                <!-- Hover Indication -->
-                <div class="absolute bottom-4 left-10 text-dos-green font-sans text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse bg-dos-bg/80 pr-2">
-                    [WAITING FOR USER INPUT] _
+                <!-- Hover Indication (Terminal Prompt) -->
+                <div class="absolute bottom-4 left-10 text-dos-green font-sans text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center bg-dos-bg/95 py-1 pr-8 z-20">
+                    <span class="mr-2">phil@garage:~$</span>
+                    <span class="w-2 h-4 bg-dos-green animate-pulse"></span>
                 </div>
 
-                <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-dos-bg/40 via-transparent to-dos-bg/40"></div>
+                <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-dos-bg/40 via-transparent to-dos-bg/80 z-10"></div>
             </div>
         </div>
     </div>

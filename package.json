@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "generate-previews": "node scripts/generate-previews.js"
+    "generate-previews": "node scripts/generate-previews.cjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",

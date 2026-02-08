@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Kanban Vibecoded",
+    "desc": "An intuitive Kanban-style task management application in a retro computer (Neo-brutalism) style, designed to organize your workload with a clear separation between professional and personal life.",
+    "url": "https://kanban.philapps.com",
+    "filename": "Kanban",
+    "image": "/portfolio/Kanban.jpg"
+  },
+  {
+    "title": "Journal Vibecoded",
+    "desc": "Journaling app for daily routine. the app uses a 4 sections method to structure your journaling and aims to provide insights through AI.",
+    "url": "https://journal.philapps.com",
+    "filename": "Journal",
+    "image": "/portfolio/Journal.jpg"
+  }
+]

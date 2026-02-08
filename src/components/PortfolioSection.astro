@@ -1,25 +1,5 @@
 ---
-// Données synchronisées avec generate-previews.js
-const apps = [
-    {
-        title: "Kanban Garage",
-        desc: "A vibecoded project management tool for tinkerer teams.",
-        url: "https://kanban.philapps.com",
-        video: "/portfolio/Kanban.webm"
-    },
-    {
-        title: "Digital Journal",
-        desc: "Captured thoughts and digital duct tape sessions.",
-        url: "https://journal.philapps.com",
-        video: "/portfolio/Journal.webm"
-    },
-    {
-        title: "Hacker News Viewer",
-        desc: "A minimalist view of the front page of the internet.",
-        url: "https://news.ycombinator.com",
-        video: "/portfolio/hacker-news-demo.webm"
-    },
-];
+import portfolioData from '../data/portfolio.json';
 ---
 <section id="portfolio" class="py-16 bg-dos-bg">
     <div class="container mx-auto px-6">
@@ -28,17 +8,14 @@ const apps = [
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {apps.map((app) => (
+            {portfolioData.map((app) => (
                 <div class="glass-card group flex flex-col p-8">
                     <div class="aspect-video bg-white/[0.02] mb-6 border border-white/5 relative overflow-hidden flex items-center justify-center grayscale opacity-30 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500">
-                        <video 
-                            src={app.video} 
-                            autoplay 
-                            loop 
-                            muted 
-                            playsinline 
-                            class="w-full h-full object-cover"
-                        ></video>
+                        <img 
+                            src={app.image} 
+                            alt={app.title}
+                            class="absolute inset-0 w-full h-full object-cover"
+                        />
                         <div class="absolute inset-0 bg-gradient-to-tr from-dos-bg via-transparent to-transparent opacity-60"></div>
                     </div>
                     
