@@ -48,6 +48,10 @@ if (!fs.existsSync(DATA_DIR)){
         try {
             await page.goto(app.url, { waitUntil: 'networkidle' });
             
+            // Wait for animations to settle and fonts to load
+            await page.waitForTimeout(2000);
+            await page.evaluate(() => document.fonts.ready);
+            
             const imageFilename = `${app.filename}.jpg`;
             const imagePath = path.join(OUTPUT_DIR, imageFilename);
             

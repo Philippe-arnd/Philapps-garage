@@ -1,4 +1,4 @@
-<img src="public/favicon.svg" width="32" alt="Favicon" />
+<img src="public/favicon.svg" width="80" alt="Favicon" />
 
 # PhilApps Garage 🛠️
 
