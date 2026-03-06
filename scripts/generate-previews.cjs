@@ -17,6 +17,12 @@ const apps = [
         url: 'https://journal.philapps.com', 
         filename: 'Journal' 
     },
+    { 
+        title: "Ink Gateway", 
+        desc: "Collaborative Human-AI framework for writing books and novels. The agent runs writing sessions autonomously on any schedule, while the human review, author and instruct", 
+        url: 'https://ink-gateway.philapps.com', 
+        filename: 'InkGateway' 
+    },
 ];
 
 const OUTPUT_DIR = path.join(__dirname, '../public/portfolio');
