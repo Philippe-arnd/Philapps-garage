@@ -23,6 +23,12 @@ const apps = [
         url: 'https://ink-gateway.philapps.com', 
         filename: 'InkGateway' 
     },
+    { 
+        title: "Le Comptoir", 
+        desc: "The finest of French craftsmanship, brought directly to Austria", 
+        url: 'https://drops.philapps.com/', 
+        filename: 'LeComptoir' 
+    },
 ];
 
 const OUTPUT_DIR = path.join(__dirname, '../public/portfolio');
