@@ -26,5 +26,12 @@
     "url": "https://drops.philapps.com/",
     "filename": "LeComptoir",
     "image": "/portfolio/LeComptoir.jpg"
+  },
+  {
+    "title": "The Watcher",
+    "desc": "Automated tech intelligence feed, running 24/7. Every article here was discovered, parsed, and surfaced by 🦞 OpenClaw",
+    "url": "https://philapps.com/watcher",
+    "filename": "TheWatcher",
+    "image": "/portfolio/TheWatcher.jpg"
   }
 ]

@@ -29,6 +29,12 @@ const apps = [
         url: 'https://drops.philapps.com/', 
         filename: 'LeComptoir' 
     },
+    { 
+        title: "The Watcher", 
+        desc: "Automated tech intelligence feed, running 24/7. Every article here was discovered, parsed, and surfaced by 🦞 OpenClaw", 
+        url: 'https://philapps.com/watcher', 
+        filename: 'TheWatcher' 
+    },
 ];
 
 const OUTPUT_DIR = path.join(__dirname, '../public/portfolio');
