@@ -11,6 +11,7 @@ const items = [...xmlData.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(match => {
     title: content.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || "Sans titre",
     link: content.match(/<link>(.*?)<\/link>/)?.[1],
     pubDate: content.match(/<pubDate>(.*?)<\/pubDate>/)?.[1],
+    description: content.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>/)?.[1] || "",
   };
 });
 
@@ -67,6 +68,10 @@ const formatDate = (dateStr) => {
                                     {item.title}
                                 </a>
                             </h2>
+
+                            <p class="text-slate-600 mb-6 leading-relaxed">
+                                {item.description}
+                            </p>
                             
                             <div class="flex items-center">
                                 <a href={item.link} target="_blank" rel="noopener noreferrer" 
