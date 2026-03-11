@@ -160,6 +160,23 @@ import '../styles/global.css';
       statusLogs.appendChild(span);
     };
 
+    const ICONS = {
+      AI: `<svg viewBox="0 0 10 10" class="w-3 h-3" fill="currentColor"><path d="M3 2h4v1h1v4h-1v1h-4v-1h-1v-4h1v-1zm1 2h2v2h-2v-2z"/></svg>`,
+      SEC: `<svg viewBox="0 0 10 10" class="w-3 h-3" fill="currentColor"><path d="M3 4h4v5h-4v-5zm1-3h2v3h-2v-3z M4 2h2v1h-2v-1z"/><rect x="4" y="6" width="2" height="1"/></svg>`,
+      SYS: `<svg viewBox="0 0 10 10" class="w-3 h-3" fill="currentColor"><path d="M2 2h6v6h-6v-6zm1 1v4h4v-4h-4z"/><rect x="0" y="4" width="2" height="2"/><rect x="8" y="4" width="2" height="2"/><rect x="4" y="0" width="2" height="2"/><rect x="4" y="8" width="2" height="2"/></svg>`,
+      DEV: `<svg viewBox="0 0 10 10" class="w-3 h-3" fill="currentColor"><path d="M3 2l-2 3 2 3h1l-2-3 2-3h-1zm4 0l2 3-2 3h-1l2-3-2-3h1z"/></svg>`,
+      MISC: `<svg viewBox="0 0 10 10" class="w-3 h-3" fill="currentColor"><path d="M2 1h4l3 3v5h-7v-8zm1 1v6h5v-4h-2v-2h-3z"/></svg>`
+    };
+
+    function getCategory(title, desc) {
+      const text = (title + ' ' + desc).toLowerCase();
+      if (text.includes('ai ') || text.includes('ai-') || text.includes('llm') || text.includes('agent') || text.includes('claude') || text.includes('gpt') || text.includes('openai') || text.includes('neural')) return 'AI';
+      if (text.includes('security') || text.includes('vulnerability') || text.includes('exploit') || text.includes('hack') || text.includes('privacy') || text.includes('auth') || text.includes('cookie') || text.includes('attack')) return 'SEC';
+      if (text.includes('hardware') || text.includes('gpu') || text.includes('system') || text.includes('low-level') || text.includes('stm32') || text.includes('quantum') || text.includes('performance') || text.includes('rust ') || text.includes('zig ')) return 'SYS';
+      if (text.includes('dev') || text.includes('code') || text.includes('language') || text.includes('typescript') || text.includes('react') || text.includes('javascript') || text.includes('mcp')) return 'DEV';
+      return 'MISC';
+    }
+
     const formatDate = (date) => date.toLocaleDateString("en-GB", { weekday: "long", day: "2-digit", month: "long", year: "numeric" });
     const formatMonth = (date) => date.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
 
@@ -264,11 +281,18 @@ import '../styles/global.css';
                 <span class="text-[10px] font-pixel text-black/20 uppercase tracking-widest">${items.length} ${items.length === 1 ? 'article' : 'articles'}</span>
               </div>
               <div class="divide-y divide-black/5">
-                ${items.map((item, i) => `
+                ${items.map((item, i) => {
+                  const cat = getCategory(item.title, item.description);
+                  return `
                   <article class="article-row px-8 py-6 transition-all duration-300 group/article">
                     <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="block">
                       <div class="flex items-start gap-4">
-                        <span class="text-[10px] font-pixel text-black/15 uppercase tracking-widest mt-1.5 shrink-0 w-5 text-right">${String(i + 1).padStart(2, "0")}</span>
+                        <div class="flex flex-col items-center gap-2 mt-1.5 shrink-0 w-8">
+                          <span class="text-[10px] font-pixel text-black/15 uppercase tracking-widest">${String(i + 1).padStart(2, "0")}</span>
+                          <div class="text-black/20 group-hover/article:text-black/60 transition-colors duration-200" title="${cat}">
+                            ${ICONS[cat]}
+                          </div>
+                        </div>
                         <div class="flex-1 min-w-0">
                           <h3 class="font-sans text-base font-semibold text-black/80 group-hover/article:text-black leading-snug mb-2 transition-colors duration-200">${item.title}</h3>
                           ${item.description ? `<p class="font-sans text-xs text-black/40 leading-relaxed line-clamp-2">${item.description}</p>` : ''}
@@ -279,7 +303,7 @@ import '../styles/global.css';
                       </div>
                     </a>
                   </article>
-                `).join('')}
+                `}).join('')}
               </div>
             </div>
           `;
