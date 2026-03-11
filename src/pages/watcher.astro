@@ -258,7 +258,7 @@ import '../styles/global.css';
             <div class="timeline-dot absolute left-0 top-3 w-6 h-6 border border-white/20 rounded-full z-10 bg-dos-bg flex items-center justify-center transition-all duration-500">
               <div class="w-2 h-2 rounded-full bg-white/20 inner-dot transition-all duration-300"></div>
             </div>
-            <div class="day-card bg-white rounded-2xl overflow-hidden transition-all duration-500 shadow-lg">
+            <div class="day-card bg-white rounded-2xl overflow-hidden transition-all duration-500 shadow-sm">
               <div class="px-8 py-5 border-b border-black/5 flex items-center justify-between">
                 <time class="oxanium-title text-lg text-black/80 normal-case tracking-tight">${formatDate(d)}</time>
                 <span class="text-[10px] font-pixel text-black/20 uppercase tracking-widest">${items.length} ${items.length === 1 ? 'article' : 'articles'}</span>
@@ -300,8 +300,8 @@ import '../styles/global.css';
     init();
   </script>
 
-  <style>
-    /* Same styles as before */
+  <style is:global>
+    /* Same styles as before, now global for dynamic elements */
     .hero-card { position: relative; overflow: hidden; }
     .hero-card::before {
       content: ""; position: absolute; inset: 0;
