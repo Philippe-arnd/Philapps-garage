@@ -136,7 +136,10 @@ import '../styles/global.css';
   </main>
 
   <script>
-    const RSS_URL = 'https://coolifybackuppar.s3.fr-par.scw.cloud/rss-public/tech_digest_rss.xml';
+    const RSS_BASE_URL = 'https://coolifybackuppar.s3.fr-par.scw.cloud/rss-public/tech_digest_rss.xml';
+    // Cache busting: append current hour to force refresh every hour
+    const cacheKey = Math.floor(Date.now() / 3600000); // Changes every hour
+    const RSS_URL = `${RSS_BASE_URL}?v=${cacheKey}`;
     const INITIAL_LIMIT = 30;
     
     let allItems = [];
