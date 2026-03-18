@@ -204,7 +204,7 @@ import '../styles/global.css';
           link: item.querySelector("link")?.textContent || "#",
           pubDate: item.querySelector("pubDate")?.textContent || "",
           description: item.querySelector("description")?.textContent || ""
-        }));
+        })).sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
 
         progressBar.style.width = '100%';
         statusText.innerText = 'Signal ready';
