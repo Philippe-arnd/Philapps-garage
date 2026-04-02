@@ -35,6 +35,12 @@ const apps = [
         url: 'https://philapps.com/watcher', 
         filename: 'TheWatcher' 
     },
+    { 
+        title: "Timestamp", 
+        desc: "The GeoGuessr of cinema! Guess the exact timestamp of movie scenes. Daily challenges, categories, and friend duels. Are you pixel-perfect? 🎬", 
+        url: 'https://timestamp.philapps.com', 
+        filename: 'Timestamp' 
+    },
 ];
 
 const OUTPUT_DIR = path.join(__dirname, '../public/portfolio');
