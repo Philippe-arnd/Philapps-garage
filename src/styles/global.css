@@ -118,16 +118,16 @@ body.effect-null .destination-section {
 /* --- Konami Code: Tron --- */
 /* Declared last so it wins the cascade over the destination effects above
    when both are active at once (e.g. Konami triggered, then slider moved). */
-body.effect-tron {
-    text-shadow: 0 0 10px rgba(0, 234, 255, 0.9), 0 0 20px rgba(0, 234, 255, 0.4);
-}
-
-body.effect-tron *,
-body.effect-tron *::before,
-body.effect-tron *::after {
+/* Scoped to elements carrying a "dos-green" utility class (text/border/bg/accent,
+   including opacity variants like text-dos-green/60 and variants like group-hover:text-dos-green)
+   so the effect only recolors what was already green, instead of every element on the page. */
+body.effect-tron [class*="dos-green"],
+body.effect-tron [class*="dos-green"]::before,
+body.effect-tron [class*="dos-green"]::after {
     color: var(--color-tron-cyan) !important;
     border-color: rgba(0, 234, 255, 0.6) !important;
     box-shadow: 0 0 12px rgba(0, 234, 255, 0.35) !important;
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.9), 0 0 20px rgba(0, 234, 255, 0.4);
 }
 
 body.effect-tron img {
