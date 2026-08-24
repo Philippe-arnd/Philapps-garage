@@ -12,6 +12,7 @@
   /* --- Couleurs Modern Monochromatic --- */
   --color-dos-bg: #050505;
   --color-dos-green: #00ff00;
+  --color-tron-cyan: #00eaff;
   --color-win95-gray: #e0e0e0;
   --color-win95-dark: #111111;
   --color-win95-blue: #ffffff;
@@ -112,4 +113,43 @@ body.effect-null .grid-background {
 body.effect-null .destination-section {
     transform: translateY(-10vh);
     transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* --- Konami Code: Tron --- */
+/* Declared last so it wins the cascade over the destination effects above
+   when both are active at once (e.g. Konami triggered, then slider moved). */
+body.effect-tron {
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.9), 0 0 20px rgba(0, 234, 255, 0.4);
+}
+
+body.effect-tron *,
+body.effect-tron *::before,
+body.effect-tron *::after {
+    color: var(--color-tron-cyan) !important;
+    border-color: rgba(0, 234, 255, 0.6) !important;
+    box-shadow: 0 0 12px rgba(0, 234, 255, 0.35) !important;
+}
+
+body.effect-tron img {
+    filter: grayscale(100%) sepia(100%) hue-rotate(150deg) saturate(6) brightness(1.1) contrast(1.4);
+}
+
+body.effect-tron .grid-background {
+    filter: hue-rotate(80deg) saturate(1.5) brightness(1.4) !important;
+    opacity: 0.3 !important;
+    animation: tron-grid-pulse 2s ease-in-out infinite;
+}
+
+@keyframes tron-grid-pulse {
+    0%, 100% { filter: hue-rotate(80deg) saturate(1.5) brightness(1.4); }
+    50% { filter: hue-rotate(80deg) saturate(1.5) brightness(2); }
+}
+
+body.effect-tron::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: inset 0 0 120px rgba(0, 234, 255, 0.25);
 }
