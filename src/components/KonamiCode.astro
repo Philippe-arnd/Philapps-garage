@@ -1,0 +1,17 @@
+---
+---
+<script>
+    const TARGET = 'philapps';
+    let buffer = '';
+
+    document.addEventListener('keydown', (event: KeyboardEvent) => {
+        if (event.key.length !== 1) return;
+
+        buffer = (buffer + event.key.toLowerCase()).slice(-TARGET.length);
+
+        if (buffer === TARGET) {
+            document.body.classList.toggle('effect-tron');
+            buffer = '';
+        }
+    });
+</script>
