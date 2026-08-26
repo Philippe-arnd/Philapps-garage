@@ -118,16 +118,24 @@ body.effect-null .destination-section {
 /* --- Konami Code: Tron --- */
 /* Declared last so it wins the cascade over the destination effects above
    when both are active at once (e.g. Konami triggered, then slider moved). */
-/* Scoped to elements carrying a "dos-green" utility class (text/border/bg/accent,
-   including opacity variants like text-dos-green/60 and variants like group-hover:text-dos-green)
-   so the effect only recolors what was already green, instead of every element on the page. */
-body.effect-tron [class*="dos-green"],
-body.effect-tron [class*="dos-green"]::before,
-body.effect-tron [class*="dos-green"]::after {
-    color: var(--color-tron-cyan) !important;
-    border-color: rgba(0, 234, 255, 0.6) !important;
-    box-shadow: 0 0 12px rgba(0, 234, 255, 0.35) !important;
-    text-shadow: 0 0 10px rgba(0, 234, 255, 0.9), 0 0 20px rgba(0, 234, 255, 0.4);
+/* Every dos-green utility (color/border/background/accent, including opacity
+   variants like bg-dos-green/5 and states like group-hover:text-dos-green) is
+   generated from the --color-dos-green variable, so re-pointing it here recolors
+   exactly what was already green — without adding glow to elements that never had any. */
+body.effect-tron {
+    --color-dos-green: var(--color-tron-cyan);
+}
+
+/* A few elements carry their own hardcoded green glow (not variable-based) and
+   need an explicit override to keep that glow, recolored, in tron mode. */
+body.effect-tron .tron-glow {
+    box-shadow: 0 0 15px rgba(0, 234, 255, 0.1);
+}
+
+body.effect-tron #destination-slider {
+    --thumb-color: var(--color-tron-cyan);
+    --thumb-glow: rgba(0, 234, 255, 0.5);
+    --thumb-glow-strong: rgba(0, 234, 255, 0.8);
 }
 
 body.effect-tron img {
