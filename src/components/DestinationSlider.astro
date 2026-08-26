@@ -160,6 +160,9 @@
 
 <style>
     #destination-slider {
+        --thumb-color: #00ff00;
+        --thumb-glow: rgba(0, 255, 0, 0.5);
+        --thumb-glow-strong: rgba(0, 255, 0, 0.8);
         -webkit-appearance: none;
         appearance: none;
         background: rgba(255, 255, 255, 0.1);
@@ -167,31 +170,31 @@
         width: 100%;
         outline: none;
     }
-    
+
     #destination-slider::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
         width: 40px;
         height: 12px;
-        background: #00ff00;
+        background: var(--thumb-color);
         cursor: pointer;
         border-radius: 0;
-        box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        box-shadow: 0 0 15px var(--thumb-glow);
         transition: all 0.2s ease;
     }
 
     #destination-slider::-webkit-slider-thumb:hover {
         transform: scaleY(1.2);
-        box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+        box-shadow: 0 0 20px var(--thumb-glow-strong);
     }
 
     #destination-slider::-moz-range-thumb {
         width: 40px;
         height: 12px;
-        background: #00ff00;
+        background: var(--thumb-color);
         cursor: pointer;
         border-radius: 0;
         border: none;
-        box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        box-shadow: 0 0 15px var(--thumb-glow);
     }
 </style>
